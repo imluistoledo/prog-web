@@ -75,4 +75,4 @@ Esta pelicula no podia prescindir del dominio de recursos tecnicos que caracteri
 
 Y como no, los efectos visuales mas sorprendentes jamas creados hasta la fecha:
 
-![](https://2.bp.blogspot.com/-basxk2YRPWY/T1rddLYlqXI/AAAAAAAACaU/Ut1QDXNdMwU/s1600/Hitchcock+vertigo+1958.jpg)
+![](https://2.bp.blogspot.com/-basxk2YRPWY/T1rddLYlqXI/AAAAAAAACaU/Ut1QDXNdMwU/s1600/Hitchcock+vertigo+1958.jpg).
