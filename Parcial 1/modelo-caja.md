@@ -31,17 +31,31 @@ Las reglas de estilos son utilizadas para modificar la apariencia de las "cajas"
 
 Continuando con el elemento `<p></p>` mostrado anteriormente, aqui un ejemplo de como modificar las propiedades de la caja:
 
-1. **El margen.**
-
-
-1. **El borde.**
-
-
-1. **El relleno.**
-
-
 1. **El contenido.**
+Este se refiere a los elementos que iran dentro de la etiqueta HTML. Puede ser texto, para el caso de una etiqueta de parrafo `<p></p>`; una imagen, en el caso de la etiqueta `<img>`.
 
+2. **El relleno.**
+Se refiere al espacio en blanco contenido entre el borde y el contenido. Su sintaxis es: 
+```CSS
+p {
+    padding: 5px 10px;
+}
+```
 
+3. **El borde.**
+Es, normalmente, una linea delgada que delimita el elemento. Su sintaxis puede ser: 
+```CSS
+p {
+    border: 10px solid #ccc;
+}
+```
 
+4. **El margen.**
+El margen comunmente es utilizado como un espacio en blanco para separar elementos dentro del contenedor en el que se encuentran. Su sintaxis puede ser:
+```CSS
+p {
+    margin: 1.4em auto;
+}
+```
+---
 # La propiedad display: Aprendiendo a utilizarla.
