@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    max-width: 900px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+body h1 {
+    color: #202124;
+}
+
+body h2 {
+    color: #3e4252;
+}
+
+body a {
+    text-decoration: none;
+    color: #ff1285;
+}
+
+body p {
+    margin: 10px 0;
+    color: #434650;
+    font-size: 1.15em;
+}
+
+body p#resume {
+    margin-left: 10px;
+    text-indent: 25px;
+}
