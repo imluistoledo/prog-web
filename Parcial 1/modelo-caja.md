@@ -59,3 +59,93 @@ p {
 ```
 ---
 # La propiedad display: Aprendiendo a utilizarla.
+### En que consiste
+La propiedad `display` de CSS, especifica como es tratado un elemento HTML, y el diseño usado por los elementos que contendra.
+
+
+Formalmente, la propiedad display establece los tipos de visualizacion interna y externa de un elemento. Por un lado, la tipo externa establece la participacion de un elemento en el diseño de flujo; mientras que la tipo interna establece el diseño de los elementos hijos.
+
+![Display en CSS](https://i.ytimg.com/vi/dPfn_PdZoUU/maxresdefault.jpg)
+
+### Los valores mas usados
+Algunos de los valores mas usados de esta propiedad son: 
+```CSS
+p {
+    display: flex;
+    display: grid;
+    display: none;
+    /* Y entre otros */
+}
+```
+A continuacion, algunos ejemplos de estos.
+#### `Display: flex;`
+![Display flex](https://i.pinimg.com/736x/51/af/bb/51afbb220540ba0e891194cff256fd23.jpg)
+#### `Display: grid;`
+![Display grid](https://www.freecodecamp.org/news/content/images/2022/05/CSS-GRID-3.png)
+#### `Display: none;`
+###### (La broma es que no se mira)
+
+
+### Los posibles valores
+A continuacion la lista de posibles valores clasificados:
+```CSS
+/* Valores <display-outside> */
+
+display: block;
+display: inline;
+display: run-in;
+
+/* Valores <display-inside> */
+display: flow;
+display: flow-root;
+display: table;
+display: flex;
+display: grid;
+display: ruby;
+display: subgrid;
+
+/* Valores <display-outside> más valores <display-inside> */
+display: block flow;
+display: inline table;
+display: flex run-in;
+
+/* Valores <display-listitem> */
+display: list-item;
+display: list-item block;
+display: list-item inline;
+display: list-item flow;
+display: list-item flow-root;
+display: list-item block flow;
+display: list-item block flow-root;
+display: flow list-item block;
+
+/* Valores <display-internal> */
+display: table-row-group;
+display: table-header-group;
+display: table-footer-group;
+display: table-row;
+display: table-cell;
+display: table-column-group;
+display: table-column;
+display: table-caption;
+display: ruby-base;
+display: ruby-text;
+display: ruby-base-container;
+display: ruby-text-container;
+
+/* Valores <display-box> */
+display: contents;
+display: none;
+
+/* Valores <display-legacy> */
+display: inline-block;
+display: inline-table;
+display: inline-flex;
+display: inline-grid;
+
+/* Valores globales */
+display: heredar;
+display: initial;
+display: unset;
+
+```
