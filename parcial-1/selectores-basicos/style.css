@@ -20,14 +20,19 @@ body h1 {
 
 body h2 {
     color: #3e4252;
+    margin: 10px 0;
+}
+
+body h3 {
+    margin-top: 20px;
 }
 
 body a {
-    text-decoration: none;
+    text-decoration: underline;
     color: #ff1285;
 }
 
-body p {
+body p.paragraph {
     margin: 10px 0;
     color: #434650;
     font-size: 1.15em;
@@ -36,4 +41,18 @@ body p {
 body p#resume {
     margin-left: 10px;
     text-indent: 25px;
+}
+
+body p#quote {
+    background-color: #ececec;
+    padding: 10px;
+    border-left: 5px solid #ff1285;
+}
+
+body img {
+    width: 100%;
+}
+
+body p b {
+    color: #ff1285;
 }
