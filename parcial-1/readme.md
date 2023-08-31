@@ -34,7 +34,7 @@ Asi que aca comparto las razones por las que es, para mi, la pelicula mas influy
 ### 1. El terror desde el comienzo.
 Desde sus primeras peliculas, Hitchcock ya se caracterizaba por introducir a la audiencia a la experiencia que estarian a punto de vivir. Esto lo lograba realizando creditos (que, si, antes los creditos aparecian al comienzo) totalmente personalizados, y esta no seria la excepcion:
 
-![Creditos iniciales](https://www.researchgate.net/profile/Anna-Matamala/publication/283213303/figure/fig3/AS:667815304507416@1536230984939/Opening-credits-for-Hitchcocks-Vertigo-by-Sam-Bass.png)
+![Creditos iniciales](https://www.artofthetitle.com/assets/resized/sm/upload/hb/lz/0m/6y/vertigo_c-0-1080-0-0.jpg?k=3a8c88212a)
 
 ### 2. La tecnica que revoluciono el cine.
 Con una magistral manera de abrir paso a la pelicula, Hitchcock nos muestra **por primera vez en la historia del cine**, una nueva tecnica llamada *Dolly zoom*. No podria ser menos adecuada, pues el efecto simula alejar los objetos en el fondo, perpetrando al expectador la acrofobia del personaje.
