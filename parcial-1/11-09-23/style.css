@@ -28,6 +28,8 @@ body {
     background-color: #727bff;
     font-size: 2em;
     font-weight: bolder;
+    border: 5px solid #313bd1;
+    padding: 5px;
 }
 
 #caja1 {
