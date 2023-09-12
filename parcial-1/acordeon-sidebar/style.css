@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #fff;
+}
+
+#container {
+    width: 100vw;
+    max-width: 100%;
+}
+
+#container #header {
+    width: 100%;
+    padding: 10px 40px;
+    text-align: center;
+    background-color: #8193ca;
+    color: #fff;
+}
+
+#container #sidebar {
+    width: 250px;
+    height: 100vh;
+    max-height: 100%;
+    float: left; /* AQUI SE USO EL FLOAT */
+    padding: 30px 20px;
+    background-color: #30343d;
+    color: #fff;
+}
+
+#container .content {
+    width: auto;
+    padding: 20px 0;
+    background: #ebebeb;
+}
