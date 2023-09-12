@@ -21,9 +21,10 @@ body {
     grid-template-rows: repeat(1fr, 33%);
     justify-items: stretch; /* Que ocupe todo su espacio en grid */
     align-items: stretch; /* Que ocupe todo su espacio en grid */
-    grid-template-areas: 'hor-short1 hor-short1 vert-long'
-                         'hor-short2 hor-short2 vert-long'
-                         'hor-long hor-long hor-long';
+    grid-template-areas: 
+                        'hor-short1 hor-short1 vert-long'
+                        'hor-short2 hor-short2 vert-long'
+                        'hor-long hor-long hor-long';
 }
 
 .caja {
