@@ -11,9 +11,39 @@
 
 .caja {
     width: calc((100% / 3) - 20px);
-    height: 100px;
+    height: 150px;
     background-color: #ff1285;
     border-radius: 12px;
     float: left;
     margin: 10px;
+    transition: 0.3s ease transform;
+}
+
+.caja:hover {
+    cursor: pointer;
+}
+
+#caja1:hover {
+    transform: translate(10px, 20px);
+}
+#caja2:hover {
+    transform: scale(0.85);
+}
+#caja3:hover {
+    transform: scale(1.05);
+}
+#caja4:hover {
+    transform: rotate(15deg) scale(0.85);
+}
+#caja5:hover {
+    transform: skew(5deg, 15deg);
+}
+#caja6:hover {
+    transform: rotateY(180deg);
+}
+#caja7:hover {
+    transform: translateY(-40px) scale(0.85);
+}
+#caja8:hover {
+    transform: matrix(1,2,3,4,5,6);
 }
