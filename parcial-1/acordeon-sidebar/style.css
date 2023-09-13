@@ -18,20 +18,64 @@ body {
 
 #container #header {
     width: 100%;
-    padding: 10px 40px;
+    height: 50px;
     text-align: center;
     background-color: #8193ca;
     color: #fff;
 }
 
 #container #sidebar {
+    position: relative;
     width: 250px;
-    height: 100vh;
+    height: calc(100vh - 50px);
     max-height: 100%;
     float: left; /* AQUI SE USO EL FLOAT */
-    padding: 30px 20px;
     background-color: #30343d;
     color: #fff;
+}
+
+li {
+    list-style-type: none;
+}
+
+#container #sidebar ol li {
+    list-style-type: '🔥';
+    padding-left: 5px;
+}
+
+#container #sidebar ul.lista {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+#container #sidebar ul.lista li.director {
+    width: 100%;
+    font-size: 0.85em;
+    padding: 10px 0 10px 20px;
+}
+
+#container #sidebar ul.lista li.director:hover {
+    background: #444a5a;
+}
+
+#container #sidebar ul.lista li.director ol {
+    padding-left: 25px;
+    /* display none */
+    display: none;
+}
+
+#container #sidebar ul.lista li.director:hover ol {
+    display: block;
+}
+
+#container #sidebar ul.lista li.director ol .pelicula {
+    transition: 0.3s ease all;
+    margin: 5px 0;
+}
+
+#container #sidebar ul.lista li.director ol .pelicula:hover {
+    transform: scale(1.15);
 }
 
 #container .content {
