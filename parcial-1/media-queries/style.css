@@ -26,11 +26,21 @@ body .contenedor .caja {
     body .contenedor {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    body .contenedor .caja {
+        background-color: #90ff12;
+        height: 300px;
+    }
 }
 
 @media screen and (min-width: 450px) {
     body .contenedor {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    body .contenedor .caja {
+        background-color: #ffef12;
+        height: 250px;
     }
 }
 
@@ -38,10 +48,20 @@ body .contenedor .caja {
     body .contenedor {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    body .contenedor .caja {
+        background-color: #ff8512;
+        height: 200px;
+    }
 }
 
 @media screen and (min-width: 1050px) {
     body .contenedor {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    body .contenedor .caja {
+        background-color: #ff1285;
+        height: 150px;
     }
 }
