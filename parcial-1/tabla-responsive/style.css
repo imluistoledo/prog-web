@@ -82,13 +82,11 @@ table td, th {
     ::-webkit-scrollbar {
         height: 10px;
     }
-    
-    /* Track */
+
     ::-webkit-scrollbar-track {
         background: transparent;
     }
-        
-    /* Handle */
+    
     ::-webkit-scrollbar-thumb {
         background: #adadad;
         border-radius: 5px;
