@@ -30,6 +30,9 @@ Como cualquier otro elemento, podemos modificar sus atributos directamente en la
 ```HTML
 <button onClick="alert('Hello!')">Saludar</button>
 ```
+
+<div class="page">
+
 De este modo, cuando el usuario haga click con el ratón en el botón "Saludar", se disparará el evento click en ese elemento HTML. Dicho botón, al tener un atributo `onClick` (cuando hagas click), ejecutará el código que tenemos asociado en el valor del atributo HTML.
 
 Otra manera de lograr este mismo resultado es reorganizando la funcionalidad de manera que el código que contendrá la función a ejecutar esté separado del llamado de dicha función en la propiedad HTML. Así, el código es más limpio al tener una función con más de una línea de código:
@@ -43,8 +46,22 @@ Otra manera de lograr este mismo resultado es reorganizando la funcionalidad de 
 <button onClick="doTask()">Saludar</button>
 ```
 
-1. #### Mediante propiedades JavaScript:
+<div class="page">
+
+Ahora sí, todo está un poco mejor organizado. Sin embargo, no es muy habitual tener bloques `<script>` de código Javascript en nuestro HTML, sino que lo habitual suele ser externalizarlo en ficheros `.js` para dividir y organizar mejor nuestro código:
+```HTML
+<script src="tasks.js"></script>
+<button onClick="doTask()">Saludar</button>
+```
+
+<div class="page">
+
+Ahora aparece un nuevo problema que quizás puede que aún no sea muy evidente. En nuestro `<button>` estamos haciendo referencia a una función llamada `doTask()` que, aparentemente, confiaremos en que se encuentra declarada dentro del fichero `tasks.js`.
+
+Esto podría convertirse en un problema, si posteriormente, o dentro de cierto tiempo, nos encontramos modificando código en el fichero `tasks.js` y le cambiamos el nombre a la función `doTask()`, ya que podríamos olvidar que hay una llamada a una función Javascript en uno (o varios) ficheros `.html`.
+
+2. #### Mediante propiedades JavaScript:
 
 
-1. #### Mediante escuchadores de eventos:
+3. #### Mediante escuchadores de eventos:
 
