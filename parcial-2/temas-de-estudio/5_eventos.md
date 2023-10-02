@@ -19,9 +19,9 @@ Dichas características pueden ser muy variadas:
 ### Formas de manejar eventos
 Existen varias formas diferentes de manejar eventos en Javascript. Cada una de estas opciones se puede utilizar para gestionar eventos en Javascript de forma equivalente, pero cada una de ellas tiene sus ventajas y sus desventajas.
 
-<div class="page">
-
 A continuación, utilizaremos el evento clic para demostrar las formas de manejar los eventos.
+
+<div class="page">
 
 1. #### Mediante atributos HTML:
 Suponiendo el HTML para el elemento botón:
