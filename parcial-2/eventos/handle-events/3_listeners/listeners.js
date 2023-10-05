@@ -3,59 +3,11 @@ btnSaludo1.addEventListener("click", function() {
     alert("Saludo con la funcion dentro del listener!")
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Funcion fuera del listener
 const saludar = () => {
     alert("Saludo con la funcion fuera del listener!")
 }
 btnSaludo2.addEventListener("click", saludar);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Multiples listeners
 const saludo = () => {
@@ -73,6 +25,7 @@ const arrBtnSaludoMultiple = document.querySelectorAll(".btnSaludo")
 arrBtnSaludoMultiple.forEach(btnSaludo => {
     btnSaludo.addEventListener("click", saludo)
     btnSaludo.addEventListener("click", (e) => {
+        console.log(e)
         alert(`Click en el boton ${e.target.id}`)
     })
 });
