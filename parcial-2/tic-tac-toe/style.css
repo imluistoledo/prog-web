@@ -18,7 +18,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 5px;
     overflow: hidden;
     background-color: #202124;
 }
@@ -30,14 +30,17 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
-    font-size: 3em; /* cambiar a imagenes */
-    background-color: salmon; /* cambiar color */
+    cursor: pointer;
+    font-size: 6em; /* cambiar a imagenes */
+    background-color: white; /* cambiar color */
 }
 
 .contenedor .caja.x {
     background-color: palegreen;
+    cursor: not-allowed;
 }
 
 .contenedor .caja.o {
     background-color: palevioletred;
+    cursor: not-allowed;
 }
