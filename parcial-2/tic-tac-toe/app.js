@@ -1,24 +1,20 @@
 const arrCajas = document.querySelectorAll(".caja")
-let turno = "x"
+let turno = 'x'
 
 arrCajas.forEach(caja => {
     caja.addEventListener("click", (e) => {
-        // Continuar js
-        if (e.target.innerText == "") {
-            // Controlar turno
-            e.target.innerText = turno // cambiar por imagen
-            if (turno == "x") {
-                //turno = "o"
-                e.target.classList.remove("o")
-                e.target.classList.add("x")
-                turno = "o"
-            }
-            else {
-                //turno = "x"
-                e.target.classList.remove("x")
-                e.target.classList.add("o")
-                turno = "x"
-            }
+        e.stopPropagation()
+        let imagenTurno = document.createElement("img")
+        imagenTurno.src = `img/${turno}.png`
+        
+        if (e.target.children.length == 0 &&
+            e.target.tagName == "DIV") {
+            e.target.appendChild(imagenTurno)
+            e.target.style.cursor = "not-allowed"
+            
+            turno == 'x' ? turno = 'o' : turno = 'x'
         }
     })
 });
+
+document.querySelector("#btnLimpiar").addEventListener("click", () => window.location.reload())
