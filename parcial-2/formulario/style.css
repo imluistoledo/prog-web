@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url("https://th.bing.com/th/id/R.2b55205a013943375a8b854a71255f00?rik=r2JLmFvXuEdj8A&pid=ImgRaw&r=0");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-container form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px 5px rgba(255,255,255,0.3);
+    border-radius: 12px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    backdrop-filter: blur(40px);
+}
+
+.form-container form .control {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+    margin: 0 auto;
+    font-weight: bolder;
+}
+
+.form-container form .control .input {
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    color: white;
+    transition: 0.3s ease all;
+}
+
+.form-container form .control .input::placeholder {
+    color: white;
+}
+
+.form-container form .control .input:hover {
+    box-shadow: 0 0 10px 5px rgba(255,255,255,0.3);
+}
+
+.form-container form .control.cta {
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.form-container form .control.cta .input {
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.form-container form .control.cta .input:hover {
+    transform: scale(1.15);
+}
