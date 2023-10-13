@@ -83,9 +83,7 @@ arrCajas.forEach(caja => {
             // Agrega el turno jugado al arreglo de estados del juego
             estadosJuego[e.target.getAttribute('data-cell-index')] = turno
             // Verificar si estado del juego
-            if (juegoActivo) {
-                validarResultado()
-            }
+            validarResultado()
             
             turno == 'x' ? turno = 'o' : turno = 'x' // Intercambia el turno
         }
