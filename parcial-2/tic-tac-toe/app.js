@@ -60,13 +60,14 @@ const validarResultado = () => {
         juegoActivo = false
         return
     }
-
+    
     // Verifica que no exista ninguna estado sin jugarse
     let empatoJuego = !estadosJuego.includes('')
     if (empatoJuego) {
         // Codigo para mostrar empate en el modal
         rondaGanada = false
         juegoActivo = false
+        mostrarEstado()
         return
     }
 }
@@ -77,7 +78,7 @@ arrCajas.forEach(caja => {
         let imagenTurno = document.createElement("img")
         imagenTurno.src = `img/${turno}.png`
         
-        if (e.target.children.length == 0 && e.target.tagName == "DIV") {
+        if (e.target.children.length == 0 && e.target.tagName == "DIV" && juegoActivo) {
             e.target.appendChild(imagenTurno) // Agrega la imagen al div
             e.target.style.cursor = "not-allowed" // Cambia el cursor a la casilla ocupada
             // Agrega el turno jugado al arreglo de estados del juego
