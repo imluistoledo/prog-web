@@ -1,6 +1,7 @@
 const arrCajas = document.querySelectorAll(".caja")
 let turno = 'x'
 let estadosJuego = ['', '', '', '', '', '', '', '', '']
+let juegoActivo = true
 // Condiciones para ganar el juego
 const condiciones = [
     [0, 1, 2],
@@ -12,6 +13,27 @@ const condiciones = [
     [0, 4, 8],
     [2, 4, 6]
 ]
+
+const mostrarEstado = () => {
+    // Gano uno de los jugadores
+    if ((turno == 'x' || turno == 'o') && juegoActivo) {
+        swal({
+            title: "Juego terminado!",
+            text: `Gano el jugador del turno: ${turno}`,
+            icon: "success",
+            button: "Continuar",
+        })
+    }
+    // Falta mostrar empate
+    else {
+        swal({
+            title: "Juego terminado!",
+            text: 'El juego termino en empate',
+            icon: "error",
+            button: "Reintentar",
+        })
+    }
+}
 
 const validarResultado = () => {
     let rondaGanada = false
@@ -34,7 +56,8 @@ const validarResultado = () => {
     if (rondaGanada) {
         // Codigo para mostrar mensaje en el modal
         rondaGanada = false
-        console.log(`Gano el jugador ${turno}`)
+        mostrarEstado()
+        juegoActivo = false
         return
     }
 
@@ -42,11 +65,11 @@ const validarResultado = () => {
     let empatoJuego = !estadosJuego.includes('')
     if (empatoJuego) {
         // Codigo para mostrar empate en el modal
-        acaboJuego = false
+        rondaGanada = false
+        juegoActivo = false
         return
     }
 }
-
 
 arrCajas.forEach(caja => {
     caja.addEventListener("click", (e) => {
@@ -60,7 +83,9 @@ arrCajas.forEach(caja => {
             // Agrega el turno jugado al arreglo de estados del juego
             estadosJuego[e.target.getAttribute('data-cell-index')] = turno
             // Verificar si estado del juego
-            validarResultado()
+            if (juegoActivo) {
+                validarResultado()
+            }
             
             turno == 'x' ? turno = 'o' : turno = 'x' // Intercambia el turno
         }
