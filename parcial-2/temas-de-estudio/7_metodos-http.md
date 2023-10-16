@@ -39,13 +39,3 @@ El método PATCH es utilizado para aplicar modificaciones parciales a un recurso
 ### Headers HTTP
 
 Las cabeceras (en inglés headers) HTTP permiten al cliente y al servidor enviar información adicional junto a una petición o respuesta. Una cabecera de petición esta compuesta por su nombre (no sensible a las mayusculas) seguido de dos puntos ':', y a continuación su valor (sin saltos de línea). Los espacios en blanco a la izquierda del valor son ignorados
-
-continuar:
-
-[HTTP headers](https://developer.mozilla.org/es/docs/Web/HTTP/Headers)
-
-[Anatomia de una peticion](https://gavilanch.wordpress.com/2019/01/03/anatomia-de-una-peticion-http/)
-
-[Autenticacion HTTP](https://developer.mozilla.org/es/docs/Web/HTTP/Authentication)
-
-[JSON](https://www.hostgator.mx/blog/json-para-principiantes-la-guia/)
