@@ -5,6 +5,7 @@ Las siglas DOM significan Document Object Model, o lo que es lo mismo, la estruc
 
 ![Que es el DOM](https://lenguajejs.com/javascript/dom/que-es/que-es-dom.png)
 
+<div class="page">
 
 ### Como seleccionar objetos del DOM
 #### getElementById()
@@ -29,6 +30,8 @@ El anterior elemento se puede seleccionar con la clase del elemento:
 const containerByClassName = document.getElementByClassName("containerClass")
 ```
 
+<div class="page">
+
 #### getElementByName()
 O con el atributo name del elemento HTML:
 ```js
@@ -48,6 +51,8 @@ O bien, suponiendo una estructura mas compleja, puede seleccionarse un elemento 
 const firstElementByTagName = document.getElementByTagName("div")[0]
 ```
 
+<div class="page">
+
 #### querySelector()
 Selecciona un elemento por:
 
@@ -66,6 +71,7 @@ const containerClass = document.querySelector(".containerId")
 const containerTag = document.querySelector("div")
 ```
 
+<div class="page">
 
 #### querySelectorAll()
 Selecciona un arreglo de elementos con los metodos de querySelector(): id, clase o etiqueta.
@@ -73,6 +79,8 @@ Selecciona un arreglo de elementos con los metodos de querySelector(): id, clase
 ```js
 const arrElements = document.querySelectorAll(".container")
 ```
+
+<div class="page">
 
 ### Gestionar clases del DOM
 
@@ -109,6 +117,8 @@ var elementClasses = elementNodeReference.classList;
 ```
 
 > `elementClasses` es un `DOMTokenList (en-US)` que representa el atributo clase de `elementNodeReference`. Si el atributo clase no está definido o está vacío, `elementClasses.length` devuelve 0. `element.classList` por sí mismo es de sólo lectura, aunque puede ser modificado usando los métodos `add()` y `remove()`.
+
+<div class="page">
 
 **Metodos:**
 
