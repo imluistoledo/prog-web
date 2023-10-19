@@ -5,3 +5,7 @@
 ### API Fetch
 
 ### Librerias de terceros (JQuery)
+
+### SOP: Same Origin Policy
+
+### CORS: Cross Origin ...

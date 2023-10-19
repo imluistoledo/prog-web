@@ -38,8 +38,5 @@ list.forEach((element, index) => {
 
 [Callbacks](https://lenguajejs.com/javascript/asincronia/callbacks/)
 
-### Promises
-[Promises](https://lenguajejs.com/javascript/asincronia/promesas/)
-
 ### Async / Await
 [Async/await](https://lenguajejs.com/javascript/asincronia/async-await/)
