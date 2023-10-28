@@ -18,6 +18,7 @@ body {
 	align-items: center;
 	width: 100%;
 	padding: 10px 20px;
+	gap: 50px;
 }
 
 .encabezado .logo {
@@ -40,6 +41,7 @@ body {
 	position: relative;
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 0 10px;
 	height: 100%;
 }
