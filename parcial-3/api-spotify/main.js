@@ -1,6 +1,8 @@
 const slcGenres = document.querySelector('#genres')
 const slcPlaylists = document.querySelector('#playlists')
 const elmPlaylist = document.querySelector('#playlist')
+const elmTitle = document.querySelector('#title')
+const elmSubtitle = document.querySelector('#subtitle')
 
 const clientID = '92f56b04ca124601acd00a35d23962f2'
 const clientSecret = 'f91026610b8c4d97a1f5b36e7c7cf76a'
@@ -76,12 +78,13 @@ const convertToMinutes = (miliseconds) => {
 
 slcGenres.addEventListener('change', () => {
     let genre = slcGenres.value
+    slcPlaylists.innerHTML = ''
     getPlaylists(token, genre).then(playlists => {
         playlists.forEach(playlist => {
             // console.log(playlist)
             let optPlaylist = document.createElement('option')
             optPlaylist.value = playlist.id
-            optPlaylist.text = playlist.name
+            optPlaylist.innerText = playlist.name
             slcPlaylists.appendChild(optPlaylist)
         })
     })
@@ -90,7 +93,10 @@ slcGenres.addEventListener('change', () => {
 slcPlaylists.addEventListener('change', () => {
     let playlistID = slcPlaylists.value
     let tracksEndPoint = `https://api.spotify.com/v1/playlists/${playlistID}`
-
+    let playlistTracks = ''
+    elmPlaylist.innerHTML = ''
+    elmTitle.innerText = slcPlaylists.options[slcPlaylists.selectedIndex].text
+    elmSubtitle.innerText = slcGenres.options[slcGenres.selectedIndex].text
     getTracks(token, tracksEndPoint).then(playlist => {
         playlist.tracks.items.forEach(item => {
             let albumName = item.track.album.name
@@ -98,31 +104,16 @@ slcPlaylists.addEventListener('change', () => {
             let songDuration = convertToMinutes(item.track.duration_ms)
             let artistName = item.track.artists[0].name
 
-            let elmSong = document.createElement('div')
-            elmSong.classList.add('song')
-            elmSong.innerText = `${songName} - ${artistName}`
-
-            let elmAlbum = document.createElement('div')
-            elmAlbum.classList.add('album')
-            elmAlbum.innerText = albumName
-
-            let elmSongInfo = document.createElement('div')
-            elmSongInfo.classList.add('song-info')
-            elmSongInfo.appendChild(elmSong)
-            elmSongInfo.appendChild(elmAlbum)
-
-            let elmDuration = document.createElement('div')
-            elmDuration.classList.add('duration')
-            elmDuration.innerText = songDuration
-
-            let elmTrack = document.createElement('li')
-            elmTrack.classList.add('track')
-
-            elmTrack.appendChild(elmSongInfo)
-            elmTrack.appendChild(elmDuration)
-
-            elmPlaylist.appendChild(elmTrack)
-            console.log(artistName)
+            playlistTracks += `
+            <li class="track">
+                <div class="song-info">
+                    <div class="song">${songName} - ${artistName}</div>
+                    <div class="album">${albumName}</div>
+                </div>
+                <div class="duration">${songDuration}</div>
+            </li>
+            `
         })
+        elmPlaylist.innerHTML = playlistTracks
     })
 })
