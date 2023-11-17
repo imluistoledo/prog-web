@@ -24,7 +24,12 @@ app.get('/usuario', (req, res) => {
     }
 
     connection.query(consulta, (err, results, fields) => {
-        res.json(results)    
+        // res.json(results)
+        if (results.length > 0) {
+            res.json(results)
+        } else {
+            res.json({mensaje: 'No existe un usuario con tal ID. Intente de nuevo'})
+        }
     })
 })
 
