@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
     <title>Grid JS</title>
 </head>
+
 <body>
     <h1>Mis albums favoritos</h1>
     <div id="wrapper"></div>
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
     <script src="src/index.js"></script>
     <script>
-        new gridjs.Grid({
-            columns: ['NombreArtista', 'ApellidoArtista', 'Album', 'Genero', 'Lanzamiento'],
-            server: {
-                url: 'http://localhost:8082/album',
-                then: data => data.map(fila =>
-                    [fila.NombreArtista, 
-                    fila.ApellidoArtista, 
-                    fila.Album, 
-                    fila.Genero, 
-                    fila.Lanzamiento
-                ]
-                )
+        let id_album = 0
+        window.addEventListener('load', () => {
+            id_album = parseInt(prompt('Ingrese un id del album: '))
+            if (id_album > 0) {
+                new gridjs.Grid({
+                    columns: ['NombreArtista', 'ApellidoArtista', 'Album', 'Genero', 'Lanzamiento'],
+                    server: {
+                        url: `http://localhost:8082/album?id_album=${id_album}`,
+                        then: data => data.map(fila =>
+                            [fila.NombreArtista,
+                            fila.ApellidoArtista,
+                            fila.Album,
+                            fila.Genero,
+                            fila.Lanzamiento
+                            ]
+                        )
+                    }
+                }).render(document.getElementById("wrapper"))
             }
-        }).render(document.getElementById("wrapper"));
+            else {
+                new gridjs.Grid({
+                    columns: ['NombreArtista', 'ApellidoArtista', 'Album', 'Genero', 'Lanzamiento'],
+                    server: {
+                        url: 'http://localhost:8082/album',
+                        then: data => data.map(fila =>
+                            [fila.NombreArtista,
+                            fila.ApellidoArtista,
+                            fila.Album,
+                            fila.Genero,
+                            fila.Lanzamiento
+                            ]
+                        )
+                    }
+                }).render(document.getElementById("wrapper"))
+            }
+        })
+
     </script>
 </body>
 
