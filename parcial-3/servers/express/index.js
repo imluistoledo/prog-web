@@ -15,21 +15,37 @@ app.listen(8082, (req, res) => {
     console.log("Servidor express corriendo en puerto 8082")
 })
 
-app.get('/usuario', (req, res) => {
+app.get('/album', (req, res) => {
     let consulta = ''
-    if (typeof(req.query.id_usuario) == 'undefined') {
-        consulta = `select * from usuario`
+    if (typeof(req.query.id_album) == 'undefined') {
+        consulta = `
+        select 
+            artista.nombre as 'NombreArtista',
+            artista.apellido as 'ApellidoArtista',
+            album.nombre_album as 'Album',
+            album.genero as 'Genero', 
+            album.fecha_lanzamiento as 'Lanzamiento' 
+        from 
+            album 
+            join artista on (album.id_artista = artista.id_artista);
+        `
     } else {
-        consulta = `select * from usuario where id_usuario = ${req.query.id_usuario}`
+        consulta = `
+        select 
+            artista.nombre as 'NombreArtista',
+            artista.apellido as 'ApellidoArtista',
+            album.nombre_album as 'Album',
+            album.genero as 'Genero', 
+            album.fecha_lanzamiento as 'Lanzamiento' 
+        from 
+            album 
+            join artista on (album.id_artista = artista.id_artista)
+        where album.id_album = ${req.query.id_album};
+        `
     }
 
     connection.query(consulta, (err, results, fields) => {
-        // res.json(results)
-        if (results.length > 0) {
-            res.json(results)
-        } else {
-            res.json({mensaje: 'No existe un usuario con tal ID. Intente de nuevo'})
-        }
+        res.send(results)
     })
 })
 

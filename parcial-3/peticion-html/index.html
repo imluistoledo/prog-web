@@ -9,12 +9,26 @@
     <form action="">
         <button id="btnPeticion" type="button">Realizar peticion</button>
     </form>
+    <table id="tblUsuarios">
+        <th>
+            <td>id</td>
+            <td>nombre</td>
+            <td>apellido</td>
+            <td>fecha de nacimiento</td>
+            <td>correo</td>
+            <td>telefono</td>
+            <td>membresia</td>
+            <td>fecha de alta</td>
+        </th>
+    </table>
     <script>
-        document.querySelector('#btnPeticion').addEventListener('click', async () => {
-            let response = await fetch ('http://localhost:8082', {
+        const tblUsuarios = document.querySelector('#tblUsuarios')
+        const btnPeticion = document.querySelector('#btnPeticion')
+        btnPeticion.addEventListener('click', async () => {
+            const response = await fetch ('http://localhost:8082/usuario', {
                 method: 'GET',
                 mode: 'no-cors'
-            }).then(console.log)
+            })
         })
     </script>
 </body>
