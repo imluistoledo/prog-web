@@ -27,7 +27,7 @@
             do {
                 id_album = parseInt(prompt('Ingrese el id del album:'))
             } while (id_album <= 0);
-            const response = await fetch(`http://localhost:8082/album?id_album=${id_album}`, {
+            const response = await fetch(`http://localhost:8083/album?id_album=${id_album}`, {
                 method: 'GET'
             })
             const data = await response.json()
@@ -35,7 +35,6 @@
                 alert(data.mensaje)
             }
             else {
-                // console.log(data.campos)
                 for (const key in data.campos) {
                     if (Object.hasOwnProperty.call(data.campos, key)) {
                         let columnName = key
