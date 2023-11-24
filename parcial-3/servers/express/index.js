@@ -11,8 +11,8 @@ const connection = mysql.createConnection({
     database: 'spotify'
 })
 
-app.listen(8082, (req, res) => {
-    console.log("Servidor express corriendo en puerto 8082")
+app.listen(8083, (req, res) => {
+    console.log("Servidor express corriendo en puerto 8083")
 })
 
 app.get('/album', (req, res) => {
@@ -32,11 +32,11 @@ app.get('/album', (req, res) => {
     } else {
         consulta = `
         select 
-            artista.nombre as 'NombreArtista',
-            artista.apellido as 'ApellidoArtista',
+            artista.nombre as 'Nombre del artista',
+            artista.apellido as 'Apellido del artista',
             album.nombre_album as 'Album',
             album.genero as 'Genero', 
-            album.fecha_lanzamiento as 'Lanzamiento' 
+            album.fecha_lanzamiento as 'Fecha de lanzamiento' 
         from 
             album 
             join artista on (album.id_artista = artista.id_artista)
@@ -44,9 +44,26 @@ app.get('/album', (req, res) => {
         `
     }
 
-    connection.query(consulta, (err, results, fields) => {
-        res.send(results)
-    })
+    connection.query(
+        consulta,
+        function (err, results, fields) {
+            if (results.length == 0) {
+                res.json({
+                    status: 0,
+                    mensaje: "El id del album no existe...",
+                    datos: {}
+                });
+            }
+            else {
+                res.json({
+                    status: 1,
+                    mensaje: "Se encontro un album...",
+                    campos: results[0]
+                });
+            }
+
+        }
+    )
 })
 
 app.post('/', (req, res) => {
