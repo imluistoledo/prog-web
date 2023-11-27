@@ -16,18 +16,18 @@
     </style>
 </head>
 <body>
-    <h1>Mis albumes favoritos</h1>
+    <h1>Mis canciones favoritas</h1>
     <form action="#" enctype="application/x-www-form-urlencoded" id="frmAlbum">
 
     </form>
     <script>
         const frmAlbum = document.querySelector('#frmAlbum')
         window.addEventListener('load', async () => {
-            let id_album = 0
+            let id_cancion = 0
             do {
-                id_album = parseInt(prompt('Ingrese el id del album:'))
-            } while (id_album <= 0);
-            const response = await fetch(`http://localhost:8083/album?id_album=${id_album}`, {
+                id_cancion = parseInt(prompt('Ingrese el id de la cancion:'))
+            } while (id_cancion <= 0)
+            const response = await fetch(`http://localhost:8083/cancion?id_cancion=${id_cancion}`, {
                 method: 'GET'
             })
             const data = await response.json()
