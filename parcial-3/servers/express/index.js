@@ -18,7 +18,7 @@ app.listen(8083, (req, res) => {
 
 app.get('/cancion', (req, res) => {
     let consulta = ''
-    if (typeof(req.query.id_cancion) == 'undefined') {
+    if (typeof (req.query.id_cancion) == 'undefined') {
         consulta = `
         select 
             C.id_cancion as 'Cancion ID',
@@ -49,14 +49,14 @@ app.get('/cancion', (req, res) => {
                     status: 0,
                     mensaje: "El id de la cancion no existe...",
                     datos: {}
-                });
+                })
             }
             else {
                 res.json({
                     status: 1,
                     mensaje: "Se encontro una cancion...",
                     campos: results[0]
-                });
+                })
             }
 
         }
@@ -68,31 +68,59 @@ app.post('/', (req, res) => {
 })
 
 app.delete('/cancion', (req, res) => {
-    let consulta = ''
-    if (typeof(req.query.id_cancion) == 'undefined') {
-        /// No se incluyo el id
-    } else {
-        consulta = `delete from cancion where cancion.id_cancion = ${req.query.id_cancion}`
+    let eliminarCancion = ''
+    let revPlaylistCont = ''
+    let eliminarPlaylistCont = ''
+
+    if (typeof (req.query.id_cancion) == 'undefined') {
+        res.json({
+            status: 0,
+            mensaje: "Falto enviar ID",
+            datos: {}
+        })
+    }
+    else {
+        revPlaylistCont = `select * from playlist_cont where id_cancion=${req.query.id_cancion}`
     }
 
     connection.query(
-        consulta,
+        revPlaylistCont,
         function (err, results, fields) {
             if (results.length == 0) {
-                res.json({
-                    status: 0,
-                    mensaje: "El id del album no existe...",
-                    datos: {}
-                });
+                // No existe playlist con tal cancion, borra la cancion unicamente
+                eliminarCancion = `delete from cancion where id_cancion = ${req.query.id_cancion};`
+                console.log(eliminarCancion)
+                fnEliminarCancion(eliminarCancion)
             }
             else {
-                res.json({
-                    status: 1,
-                    mensaje: "Se encontro un album...",
-                    campos: results[0]
-                });
+                // Hay canciones en la playlist
+                eliminarPlaylistCont = `delete from playlist_cont where id_cancion = ${req.query.id_cancion};`
+                fnEliminarCancion(eliminarPlaylistCont)
+                eliminarCancion = `delete from cancion where id_cancion = ${req.query.id_cancion};`
+                fnEliminarCancion(eliminarCancion)
+                console.log(eliminarCancion)
             }
-
         }
     )
+    const fnEliminarCancion = (consulta) => {
+            connection.query(consulta, function (err, results, fields) {
+                if (results.affectedRows == 1) {
+                    res.json({
+                            status: 1,
+                            mensaje: "Cancion eliminada correctamente",
+                            datos: {}
+                        }
+                    )
+                }
+                else {
+                    res.json({
+                            status: 0,
+                            mensaje: "No se ha eliminado ninguna cancion",
+                            datos: {}
+                        }
+                    )
+                }
+            }
+        )
+    }
 })

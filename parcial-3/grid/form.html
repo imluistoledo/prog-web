@@ -18,10 +18,11 @@
 <body>
     <h1>Mis canciones favoritas</h1>
     <form action="#" enctype="application/x-www-form-urlencoded" id="frmAlbum">
-
+        <input type="button" value="Borrar cancion" id="btnBorrarCancion">
     </form>
     <script>
         const frmAlbum = document.querySelector('#frmAlbum')
+        const btnBorrarCancion = document.querySelector('#btnBorrarCancion')
         window.addEventListener('load', async () => {
             let id_cancion = 0
             do {
@@ -56,6 +57,13 @@
                         frmAlbum.appendChild(divControl)
                     }
                 }
+                btnBorrarCancion.addEventListener('click', async () => {
+                    const responseBorrar = await fetch(`http://localhost:8083/cancion?id_cancion=${id_cancion}`, {
+                        method: 'DELETE'
+                    })
+                    const dataBorrar = await responseBorrar.json()
+                    alert(dataBorrar.mensaje)
+                })
             }
         })
     </script>
