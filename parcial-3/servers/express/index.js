@@ -1,3 +1,4 @@
+// Este es el server para el delete
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -15,33 +16,63 @@ app.listen(8083, (req, res) => {
     console.log("Servidor express corriendo en puerto 8083")
 })
 
-app.get('/album', (req, res) => {
+app.get('/cancion', (req, res) => {
     let consulta = ''
-    if (typeof(req.query.id_album) == 'undefined') {
+    if (typeof(req.query.id_cancion) == 'undefined') {
         consulta = `
         select 
-            artista.nombre as 'NombreArtista',
-            artista.apellido as 'ApellidoArtista',
-            album.nombre_album as 'Album',
-            album.genero as 'Genero', 
-            album.fecha_lanzamiento as 'Lanzamiento' 
-        from 
-            album 
-            join artista on (album.id_artista = artista.id_artista);
+            C.id_cancion as 'Cancion ID',
+            C.nombre_cancion as 'Nombre',
+            C.duracion_min as 'Duracion',
+            C.letra as 'Letra'
+        from
+            cancion as C;
         `
     } else {
         consulta = `
         select 
-            artista.nombre as 'Nombre del artista',
-            artista.apellido as 'Apellido del artista',
-            album.nombre_album as 'Album',
-            album.genero as 'Genero', 
-            album.fecha_lanzamiento as 'Fecha de lanzamiento' 
-        from 
-            album 
-            join artista on (album.id_artista = artista.id_artista)
-        where album.id_album = ${req.query.id_album};
+            C.id_cancion as 'Cancion ID',
+            C.nombre_cancion as 'Nombre',
+            C.duracion_min as 'Duracion',
+            C.letra as 'Letra'
+        from
+            cancion as C
+        where C.id_cancion = ${req.query.id_cancion};
         `
+    }
+
+    connection.query(
+        consulta,
+        function (err, results, fields) {
+            if (results.length == 0) {
+                res.json({
+                    status: 0,
+                    mensaje: "El id de la cancion no existe...",
+                    datos: {}
+                });
+            }
+            else {
+                res.json({
+                    status: 1,
+                    mensaje: "Se encontro una cancion...",
+                    campos: results[0]
+                });
+            }
+
+        }
+    )
+})
+
+app.post('/', (req, res) => {
+    res.json({ mensaje: " Server Express respondiendo post " })
+})
+
+app.delete('/cancion', (req, res) => {
+    let consulta = ''
+    if (typeof(req.query.id_cancion) == 'undefined') {
+        /// No se incluyo el id
+    } else {
+        consulta = `delete from cancion where cancion.id_cancion = ${req.query.id_cancion}`
     }
 
     connection.query(
@@ -64,12 +95,4 @@ app.get('/album', (req, res) => {
 
         }
     )
-})
-
-app.post('/', (req, res) => {
-    res.json({ mensaje: " Server Express respondiendo post " })
-})
-
-app.delete('/', (req, res) => {
-    res.json({ mensaje: " Server Express respondiendo a delete " })
 })
