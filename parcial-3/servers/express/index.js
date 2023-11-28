@@ -3,8 +3,13 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mysql = require('mysql2')
+const bodyParser = require('body-parser')
+const multer = require('multer')
+const upload = multer()
 
 app.use(cors())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -21,7 +26,7 @@ app.get('/cancion', (req, res) => {
     if (typeof (req.query.id_cancion) == 'undefined') {
         consulta = `
         select 
-            C.id_cancion as 'Cancion ID',
+            C.id_cancion as 'CancionID',
             C.nombre_cancion as 'Nombre',
             C.duracion_min as 'Duracion',
             C.letra as 'Letra'
@@ -31,7 +36,7 @@ app.get('/cancion', (req, res) => {
     } else {
         consulta = `
         select 
-            C.id_cancion as 'Cancion ID',
+            C.id_cancion as 'CancionID',
             C.nombre_cancion as 'Nombre',
             C.duracion_min as 'Duracion',
             C.letra as 'Letra'
@@ -63,8 +68,34 @@ app.get('/cancion', (req, res) => {
     )
 })
 
-app.post('/', (req, res) => {
-    res.json({ mensaje: " Server Express respondiendo post " })
+app.post('/enviar', upload.none(), (req, res) => {
+    // let id_cancion = req.body.id
+    let nombre = req.body.nombre.replace(/'/g, '')
+    let duracion = req.body.duracion.replace(/'/g, '')
+    let letra = req.body.letra.replace(/'/g, '')
+    let consulta = `
+        insert into cancion (id_artista, id_album, nombre_cancion, duracion_min, letra)
+        values (
+            1, 1, '${nombre}', '${duracion}', '${letra}'
+        )`
+    connection.query(consulta, (err, results, fields) => {
+        if (results.affectedRows > 0 && typeof(results.affectedRows) != 'undefined') {
+            res.json({
+                status: 1,
+                mensaje: 'Cancion insertada'
+            })
+        }
+        else {
+            res.json({
+                status: 0,
+                mensaje: 'No fue posible insertar la cancion'
+            })    
+        }
+    })
+    // res.json({
+    //     status: 1,
+    //     mensaje: `Cancion recibida: ${id_cancion}, ${nombre}, ${duracion}, ${letra}`
+    // })
 })
 
 app.delete('/cancion', (req, res) => {
