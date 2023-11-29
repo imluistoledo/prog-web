@@ -6,6 +6,8 @@ const mysql = require('mysql2')
 const bodyParser = require('body-parser')
 const multer = require('multer')
 const upload = multer()
+const {jspdf, default: jsPDF} = require('jspdf')
+const path = require('path')
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -92,10 +94,35 @@ app.post('/enviar', upload.none(), (req, res) => {
             })    
         }
     })
-    // res.json({
-    //     status: 1,
-    //     mensaje: `Cancion recibida: ${id_cancion}, ${nombre}, ${duracion}, ${letra}`
-    // })
+})
+
+app.put('/actualizar', upload.none(), (req, res) => {
+    let id = req.body.id.replace(/'/g, '')
+    let nombre = req.body.nombre.replace(/'/g, '')
+    let duracion = req.body.duracion.replace(/'/g, '')
+    let letra = req.body.letra.replace(/'/g, '')
+    let consulta = `
+        update cancion 
+        set 
+            nombre_cancion='${nombre}', 
+            duracion_min='${duracion}', 
+            letra='${letra}'
+        where id_cancion = ${id}
+    `
+    connection.query(consulta, (err, results, fields) => {
+        if (results.affectedRows > 0 && typeof(results.affectedRows) != 'undefined') {
+            res.json({
+                status: 1,
+                mensaje: 'Cancion actualizada'
+            })
+        }
+        else {
+            res.json({
+                status: 0,
+                mensaje: 'No fue posible actualizar la cancion'
+            })    
+        }
+    })
 })
 
 app.delete('/cancion', (req, res) => {
@@ -154,4 +181,12 @@ app.delete('/cancion', (req, res) => {
             }
         )
     }
+})
+
+app.get('/formato', (req, res) => {
+    const doc = new jsPDF()
+    doc.text('hello world!', 10, 10)
+    let archivoPDF = path.join(__dirname,'a4.pdf')
+    doc.save(archivoPDF)
+    res.sendFile(archivoPDF)
 })
