@@ -14,17 +14,22 @@
             gap: 20px;
         }
     </style>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <h1>Mis canciones favoritas</h1>
     <form id="frmCancion">
         <input type="button" value="Borrar cancion" id="btnBorrarCancion">
         <input type="button" value="Agregar cancion" id="btnAgregarCancion">
+        <input type="button" value="Actualizar cancion" id="btnActualizarCancion">
+        <input type="button" value="Generar PDF" id="btnGenerarPDF">
     </form>
     <script>
         const frmCancion = document.querySelector('#frmCancion')
         const btnBorrarCancion = document.querySelector('#btnBorrarCancion')
         const btnAgregarCancion = document.querySelector('#btnAgregarCancion')
+        const btnActualizarCancion = document.querySelector('#btnActualizarCancion')
+        const btnGenerarPDF = document.querySelector('#btnGenerarPDF')
         window.addEventListener('load', async () => {
             let id_cancion = 0
             do {
@@ -35,7 +40,12 @@
             })
             const data = await response.json()
             if (data.status == 0) {
-                alert(data.mensaje)
+                Swal.fire({
+                    title: 'Error!',
+                    text: data.mensaje,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
             }
             else {
                 for (const key in data.campos) {
@@ -65,7 +75,12 @@
                         method: 'DELETE'
                     })
                     const dataBorrar = await responseBorrar.json()
-                    alert(dataBorrar.mensaje)
+                    Swal.fire({
+                        title: 'Error!',
+                        text: dataBorrar.mensaje,
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })
                 })
                 
                 btnAgregarCancion.addEventListener('click', async () => {
@@ -80,6 +95,30 @@
                     })
                     const dataAgregar = await responseAgregar.json()
                     alert(dataAgregar.mensaje)
+                })
+
+                btnActualizarCancion.addEventListener('click', async () => {
+                    const formData = new FormData(frmCancion)
+                    formData.append('id', document.querySelector('#CancionID').value)
+                    formData.append('nombre', document.querySelector('#Nombre').value)
+                    formData.append('duracion', document.querySelector('#Duracion').value)
+                    formData.append('letra', document.querySelector('#Letra').value)
+
+                    const responseActualizar = await fetch('http://localhost:8083/actualizar', {
+                        method: 'PUT',
+                        body: formData
+                    })
+                    const dataActualizar = await responseActualizar.json()
+                    alert(dataActualizar.mensaje)
+                })
+                
+                btnGenerarPDF.addEventListener('click', async () => {
+                    const responseGenerarPDF = await fetch('http://localhost:8083/formato', {
+                        method: 'GET'
+                    })
+                    const dataGenerarPDF = await responseGenerarPDF.blob()
+                    let archivoPDF = window.URL.createObjectURL(dataGenerarPDF)
+                    window.open(archivoPDF)
                 })
             }
         })
